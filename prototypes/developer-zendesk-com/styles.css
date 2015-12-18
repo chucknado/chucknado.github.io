@@ -138,6 +138,10 @@ pre code {
 .doc_links {
 	width: 600px;
 }
+
+.doc_links_home {
+	width: 900px;
+}
 </style><style type="text/css">
 body {
 	font-family: "Geneva", Arial, sans-serif;
