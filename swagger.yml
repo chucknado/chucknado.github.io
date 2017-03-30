@@ -1,0 +1,346 @@
+swagger: '2.0'
+info:
+  version: 2.0.0
+  title: Brands
+  description: |
+    This part documents the Brands API. For general information on using the API, such as authentication,
+     rate limits, and pagination, see the [Zendesk API Overview](https://developer.zendesk.com/rest_api/docs/core/introduction).
+host: nadosolutions.zendesk.com
+basePath: /api/v2/
+schemes:
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+securityDefinitions:
+  Basic:
+    type: basic
+security:
+  - Basic: []
+paths:
+  /brands.json:
+    get:
+      summary: List brands
+      tags:
+        - brands
+      description: |
+        * `GET /api/v2/brands.json`
+
+        Returns a list of all brands for your account sorted by name.
+
+        #### Allowed for
+
+        * Admins
+        * Agents
+
+        #### Using cURL
+
+        ```bash
+        curl https://{subdomain}.zendesk.com/api/v2/brands.json \
+          -v -u {email_address}:{password}
+        ```
+      responses:
+        200:
+          description: OK
+          schema:
+            $ref: '#/definitions/Brands'
+    post:
+      summary: Create brand
+      tags:
+        - brands
+      description: |
+        * `POST /api/v2/brands.json`
+
+        #### Allowed for
+
+        * Admins
+
+        #### Using cURL
+
+        ```bash
+        curl https://{subdomain}.zendesk.com/api/v2/brands.json \
+          -d '{"brand": {"name": "Brand 1", "subdomain": "brand1"}}' \
+          -H "Content-Type: application/json" -X POST \
+          -v -u {email_address}:{password}
+        ```
+      parameters:
+        - $ref: '#/parameters/Brand'
+      responses:
+        201:
+          description: Created
+          schema:
+            type: object
+            properties:
+              brand:
+                $ref: '#/definitions/Brand'
+
+  /brands/{id}.json:
+
+    get:
+      summary: Show brand
+      tags:
+        - brands
+      description: |
+        * `GET /api/v2/brands/{id}.json`
+
+
+        #### Allowed for
+
+        * Admins
+        * Agents
+
+        #### Using cURL
+
+        ```bash
+        curl https://{subdomain}.zendesk.com/api/v2/brands/{id}.json \
+          -v -u {email_address}:{password}
+        ```
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: brand ID in Zendesk Support
+          required: true
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              brand:
+                $ref: '#/definitions/Brand'
+
+    put:
+      summary: Update brand
+      tags:
+        - brands
+      description: |
+        * `PUT /api/v2/brands/{id}.json`
+
+        #### Allowed for
+
+        * Admins
+
+        #### Using curl
+
+        ```bash
+        curl https://{subdomain}.zendesk.com/api/v2/brands/{id}.json \
+          -d '{"brand": {"name": "Brand 1", "subdomain": "brand1", "host_mapping": "brand1.com", "active": true}}' \
+          -H "Content-Type: application/json" -X PUT \
+          -v -u {email_address}:{password}
+        ```
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: brand ID in Zendesk Support
+          required: true
+        - $ref: '#/parameters/Brand'
+      responses:
+        200:
+          description: OK
+          schema:
+            type: object
+            properties:
+              brand:
+                $ref: '#/definitions/Brand'
+
+    delete:
+      summary: Delete brand
+      tags:
+        - brands
+      description: |
+        * `DELETE /api/v2/brands/{id}.json`
+
+        #### Allowed for
+
+        * Admins
+
+        #### Using curl
+
+        ```bash
+        curl https://{subdomain}.zendesk.com/api/v2/brands/{id}.json \
+          -v -u {email_address}:{password} -X DELETE
+        ```
+      parameters:
+        - name: id
+          in: path
+          type: integer
+          description: brand ID in Zendesk Support
+          required: true
+      responses:
+        204:
+          description: No Content
+
+definitions:
+
+  Brands:
+    type: object
+    properties:
+      brands:
+        type: array
+        items:
+          $ref: '#/definitions/Brand'
+        readOnly: true
+        description: List of brands
+      page:
+        type: integer
+        format: int64
+        readOnly: true
+        example: 2
+        description: Current page number
+      previous_page:
+        type: string
+        readOnly: true
+        example: 'https://example.zendesk.com/api/v2/brands.json?page=1'
+        description: Previous page url; `null` if no previous page
+      next_page:
+        type: string
+        readOnly: true
+        example: 'https://example.zendesk.com/api/v2/brands.json?page=3'
+        description: Next page url; `null` if no next page
+      per_page:
+        type: integer
+        format: int64
+        readOnly: true
+        example: 30
+        description: Number of records per page
+      page_count:
+        type: integer
+        format: int64
+        readOnly: true
+        example: 3
+        description: Total number of pages
+      count:
+        type: integer
+        format: int64
+        readOnly: true
+        example: 61
+        description: Total number of records
+
+  Brand:
+    type: object
+    required:
+     - name
+     - subdomain
+    properties:
+      id:
+        type: integer
+        format: int64
+        readOnly: true
+        example: 200142577
+        description: Automatically assigned when the brand is created
+      name:
+        type: string
+        example: Omniwear
+        description: The name of the brand
+      url:
+        type: string
+        readOnly: true
+        example: https://example.zendesk.com/api/v2/brands/200142577.json
+        description: The API url of this brand
+      brand_url:
+        type: string
+        example: https://omniwear.com
+        description: The url of the brand
+      subdomain:
+        type: string
+        example: omniwear
+        description: The Zendesk Support subdomain of the brand (only admins can view this key)
+      has_help_center:
+        type: boolean
+        example: true
+        description: If the brand has a Help Center
+      help_center_state:
+        type: string
+        readOnly: true
+        example: enabled
+        description: Possible values are enabled, disabled, or restricted
+      active:
+        type: boolean
+        example: false
+        description: If the brand is set as active
+      default:
+        type: boolean
+        example: true
+        description: If the brand the default brand for this account
+      ticket_form_ids:
+        type: array
+        items:
+          type: integer
+          format: int64
+        readOnly: true
+        example: [200142788, 200142821]
+        description: The ids of ticket forms that are available for use by a brand
+      host_mapping:
+        type: string
+        example: omniwear.com
+        description: The hostmapping to this brand, if any (only admins can view this key)
+      signature_template:
+        type: string
+        example: {{agent.signature}}
+        description: The signature template for a brand
+      created_at:
+        type: string
+        format: date-time
+        readOnly: true
+        example: 2014-04-17T17:52:46Z
+        description: The time the brand was created
+      updated_at:
+        type: string
+        format: date-time
+        readOnly: true
+        example: 2016-12-09T00:11:41Z
+        description: The time the brand was last updated
+
+parameters:
+
+  Brand:
+    name: brand
+    in: body
+    description: JSON object
+    required: true
+    schema:
+      type: object
+      required:
+        - brand
+      properties:
+        brand:
+          type: object
+          required:
+           - name
+           - subdomain
+          properties:
+            name:
+              type: string
+              example: Omniwear
+              description: The name of the brand
+            brand_url:
+              type: string
+              example: https://omniwear.com
+              description: The url of the brand
+            subdomain:
+              type: string
+              example: omniwear
+              description: The Zendesk Support subdomain of the brand (only admins can view this key)
+            has_help_center:
+              type: boolean
+              example: true
+              description: If the brand has a Help Center
+            active:
+              type: boolean
+              example: false
+              description: If the brand is set as active
+            default:
+              type: boolean
+              example: true
+              description: If the brand the default brand for this account
+            host_mapping:
+              type: string
+              example: omniwear.com
+              description: The hostmapping to this brand, if any (only admins can view this key)
+            signature_template:
+              type: string
+              example: {{agent.signature}}
+              description: The signature template for a brand
