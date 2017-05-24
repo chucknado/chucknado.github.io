@@ -200,11 +200,13 @@ pre > code {
 
 </style></head>
 <body>
-<p>You can publish an article in multiple Help Centers, or in multiple locations within one Help Center, or a combination of both. The process involves using iframes to embed the same content in multiple locations.</p>
+<h2 id="toc_0">Publishing an article in multiple sections in Help Center</h2>
+
+<p>You can publish an article in multiple sections in Help Center. The process involves using iframes to embed the same content in multiple locations.</p>
 
 <p><strong>Note</strong>: One limitation of the iframe solution is that anchor links in the article won&#39;t work.</p>
 
-<h3 id="toc_0">Get access to a separate file server</h3>
+<h3 id="toc_1">Get access to a separate file server</h3>
 
 <p>The source article must be hosted elsewhere than the Help Center to be served into  iframes in multiple articles in the Help Center.</p>
 
@@ -220,7 +222,7 @@ pre > code {
 </code></pre></li>
 </ol>
 
-<h3 id="toc_1">Create supporting JS for your article source files</h3>
+<h3 id="toc_2">Create supporting JS for your article source files</h3>
 
 <ol>
 <li><p>Create a JavaScript file named <strong>shared_article.js</strong>.</p></li>
@@ -240,7 +242,7 @@ window.addEventListener(&#39;load&#39;, init, false);
 </code></pre></li>
 </ol>
 
-<h3 id="toc_2">Modify the Help Center JavaScript</h3>
+<h3 id="toc_3">Modify the Help Center JavaScript</h3>
 
 <p>Insert the following snippet in the JavaScript template in your Help Center, after the document ready block. Make sure to replace the example origin in the third statement with your own.</p>
 
@@ -274,7 +276,7 @@ window.addEventListener(&quot;message&quot;, receiveMessage, false);
 // END OF SHARED ARTICLE IFRAME
 </code></pre>
 
-<h3 id="toc_3">Create the shared article</h3>
+<h3 id="toc_4">Create the shared article</h3>
 
 <ol>
 <li><p>Right-click the following link to download an HTML template for shared articles:</p>
@@ -291,7 +293,7 @@ window.addEventListener(&quot;message&quot;, receiveMessage, false);
 <li><p>Note the new url of the file.</p></li>
 </ol>
 
-<h3 id="toc_4">Create the container articles in HC</h3>
+<h3 id="toc_5">Create the container articles in HC</h3>
 
 <ol>
 <li><p>In each section in HC where you want the article to appear, create a container article and specify your article title.</p></li>
