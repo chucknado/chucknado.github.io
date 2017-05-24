@@ -277,18 +277,21 @@ window.addEventListener(&quot;message&quot;, receiveMessage, false);
 <h3 id="toc_3">Create the shared article</h3>
 
 <ol>
-<li><p>Write an HTML version of the article in a separate text or html editor.</p></li>
-<li><p>Copy the HTML between the opening and closing <code>body</code> tags.</p></li>
-<li><p>Open the file template attached below in a text editor like TextWrangler or Author.</p></li>
-<li><p>Paste your article&#39;s HTML into the template file where indicated.</p>
+<li><p>Right-click the following link to download an HTML template for shared articles:</p>
+
+<p><a href="http://chucknado.github.io/docs/source_html_template.html">HTML template for single-source article</a></p>
 
 <p><strong>Note</strong>: The template includes an import statement for the <strong>shared_article.js</strong> file you created above.</p></li>
+<li><p>Write an HTML version of your article in a separate text or html editor.</p></li>
+<li><p>Copy the HTML between the opening and closing <code>body</code> tags.</p></li>
+<li><p>Open the HTML template you downloaded in step 1 in the text editor.</p></li>
+<li><p>Paste your article&#39;s body into the template where indicated.</p></li>
 <li><p>Save the file with a unique name.</p></li>
-<li><p>Upload the file to a public file server such as Amazon S3. </p></li>
+<li><p>Upload the file to your docs folder on your file server. </p></li>
 <li><p>Note the new url of the file.</p></li>
 </ol>
 
-<h3 id="toc_4">Create the container articles</h3>
+<h3 id="toc_4">Create the container articles in HC</h3>
 
 <ol>
 <li><p>In each section in HC where you want the article to appear, create a container article and specify your article title.</p></li>
@@ -297,15 +300,13 @@ window.addEventListener(&quot;message&quot;, receiveMessage, false);
 <pre><code>&lt;iframe id=&quot;shared-article&quot; src=&quot;https://your_subdomain.s3.amazonaws.com/path/filename.html&quot; frameborder=&quot;0&quot; width=&quot;100%&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
 </code></pre>
 
-<p>Make sure to use your information. Example:</p>
+<p>Make sure to use your information in the <code>src</code> attribute. Example:</p>
 
 <pre><code>&lt;iframe id=&quot;shared-article&quot; src=&quot;https://my-documentation.s3.amazonaws.com/docs/en/hr_policy.html&quot; frameborder=&quot;0&quot; width=&quot;100%&quot; scrolling=&quot;no&quot;&gt;&lt;/iframe&gt;
 </code></pre></li>
 <li><p>Publish the article.</p></li>
 <li><p>Repeat steps 1 to 3 in each location.</p></li>
 </ol>
-
-<p>HTML file template for single-source article</p>
 
 </body>
 </html>
