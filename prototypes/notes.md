@@ -5,9 +5,9 @@
 
 * Pick low-hanging fruit
 
-* Add "Get Started" link to the page topbar, replacing "Events" to make space (the existing Events link is useless for devs as it now links to the company's events page)
+* Add "Get Started" link to the page topbar, replacing "Events" to make space (the existing Events link is pretty much useless for devs as it now links to the company's events page)
 
-	Added benefit: the topbar appears on every page on the site.
+	BONUS: The topbar appears on every page on the site.
 
 * Add big "Get Started" tile on home page -> see [mockup](#).
 
@@ -41,7 +41,7 @@ GS content
 
 * Reskin/restructure Hercules with a cross-product, cross-area landing page
 
-	See http://chucknado.github.io/prototypes/developer-zendesk-com/home.html
+	See http://chucknado.github.io/prototypes/developer-zendesk-com/
 
 
 	> Support
