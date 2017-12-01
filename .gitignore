@@ -6,3 +6,7 @@ prototypes/notes.md
 prototypes/comps/comp-05.psd
 
 docs/single-sourcing-articles.md
+
+*.iml
+
+*.xml
